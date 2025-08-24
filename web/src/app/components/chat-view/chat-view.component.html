@@ -1,0 +1,78 @@
+@let conversation = state.currentConversation$ | async;
+@let hasConversation = state.hasConversation$ | async;
+@let loading = state.loading$ | async;
+@let askingQuestion = state.askingQuestion$ | async;
+@let error = state.error$ | async;
+
+<div class="chat-view-container">
+  <div class="header">
+    <button class="btn btn-secondary" (click)="goBack()">
+      ← Back to the list
+    </button>
+    <div class="chat-info">
+      <h1>{{ user }}</h1>
+      <span class="chat-id">#{{ id }}</span>
+    </div>
+  </div>
+
+  @if (loading) {
+    <div class="loading">
+      Loading chat...
+    </div>
+  }
+
+  @if (!loading && error) {
+    <div class="error-message">
+      {{ error }}
+    </div>
+  }
+
+  @if (!loading && !error) {
+
+    <div class="chat-content">
+      <div class="conversation-container">
+        @if (!hasConversation) {
+          <div class="no-messages">
+            <p>There are no messages in this chat. Ask the first question!</p>
+          </div>
+        }
+
+        @for (entry of conversation; track entry.question) {
+          <div class="message">
+            <div class="question">
+              <strong>Question:</strong> {{ entry.question }}
+            </div>
+            <div class="answer">
+              <strong>Answer:</strong> {{ entry.answer }}
+            </div>
+          </div>
+        }
+
+      </div>
+
+      <div class="ask-question-section">
+        <h3>Ask a question</h3>
+        <div class="question-form">
+          <input
+            type="text"
+            [(ngModel)]="newQuestion"
+            placeholder="Enter your question..."
+            [disabled]="!!askingQuestion"
+            (keyup.enter)="askQuestion()"
+          >
+          <button
+            class="btn btn-primary"
+            (click)="askQuestion()"
+            [disabled]="!!askingQuestion || !newQuestion.trim()"
+          >
+            @if (askingQuestion) {
+              <span>Sending...</span>
+            } @else {
+              <span>Ask</span>
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

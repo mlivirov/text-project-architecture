@@ -7,21 +7,88 @@
 node_modules/
 dist/
 
+# .NET build artifacts
+bin/
+obj/
+*.dll
+*.pdb
+*.exe
+*.cache
+*.tmp
+
+# .NET user-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
 # Compiled Java class files
 *.class
 
 # Compiled Python bytecode
 *.py[cod]
 
-# Log files
-*.log
-
 # Package files
 *.jar
 
 # Maven
 target/
-dist/
 
 # JetBrains IDE
 .idea/
@@ -37,7 +104,6 @@ Thumbs.db
 
 # Applications
 *.app
-*.exe
 *.war
 
 # Large media files

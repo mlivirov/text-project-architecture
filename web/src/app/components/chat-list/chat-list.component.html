@@ -1,0 +1,71 @@
+@let chats = state.chats$ | async;
+@let loading = state.loading$ | async;
+@let error = state.error$ | async;
+
+<div class="chat-list-container">
+  <div class="header">
+    <h1>Chats List</h1>
+
+    <div class="search-input">
+      <input type="text" [(ngModel)]="searchKeyword" placeholder="Search chats..." (keyup)="searchChats()">
+      <button class="btn btn-secondary" (click)="searchChats()">
+        Search
+      </button>
+    </div>
+
+    <button class="btn btn-primary" (click)="createNewChat()">
+      Create new Chat
+    </button>
+  </div>
+
+  <div class="chats-container">
+    @if (error) {
+      <div class="error-message">
+        {{ error }}
+      </div>
+    }
+
+    @if (loading) {
+      <div class="loading">
+        Loading...
+      </div>
+    }
+
+    @if (chats && !loading) {
+      @if (chats.length === 0) {
+        <div class="no-chats">
+          <p>Chats not found</p>
+        </div>
+      }
+
+      @if (chats.length > 0) {
+        <div class="chats-grid">
+          @for (chat of chats; track chat.id) {
+            <div class="chat-card" (click)="openChat(chat.id)">
+              <div class="chat-header">
+                <h3>{{ chat.user }}</h3>
+                <span class="chat-id">#{{ chat.id }}</span>
+              </div>
+              <div class="chat-stats">
+                <span>{{ getChatMessagesCount(chat) }} messages</span>
+              </div>
+              <div class="chat-preview">
+                @if (getChatMessagesCount(chat) > 0) {
+                  <p>
+                    Last question: {{ getChatConversations(chat)[0] }}
+                  </p>
+                }
+                @if (getChatMessagesCount(chat) === 0) {
+                  <p>
+                    No messages
+                  </p>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+
+  </div>
+</div>

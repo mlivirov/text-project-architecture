@@ -1,0 +1,46 @@
+@let loading = state.loading$ | async;
+@let error = state.error$ | async;
+
+<div class="create-chat-container">
+  <div class="header">
+    <button class="btn btn-secondary" (click)="goBack()">
+      ← Back
+    </button>
+    <h1>Create new chat</h1>
+  </div>
+
+  <div class="form-container">
+    <div class="form-group">
+      <label for="userName">Username:</label>
+      <input
+        type="text"
+        id="userName"
+        [(ngModel)]="userName"
+        placeholder="Enter username"
+        [disabled]="!!loading"
+        (keyup.enter)="state.createChat(userName)"
+      >
+    </div>
+
+    @if (!!error) {
+      <div class="error-message">
+        {{ error }}
+      </div>
+    }
+
+    <div class="form-actions">
+      <button
+        class="btn btn-primary"
+        (click)="state.createChat(userName)"
+        [disabled]="loading || !userName.trim()"
+      >
+
+        @if (loading) {
+          <span>Creating...</span>
+        } @else {
+          <span>Create chat</span>
+        }
+      </button>
+    </div>
+  </div>
+</div>
