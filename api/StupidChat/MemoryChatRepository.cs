@@ -5,23 +5,28 @@ using System.Threading.Tasks;
 public class MemoryChatRepository : IChatRepository
 {
     private List<Chat> _chats = new();
+    private int _id = 0;
 
     public async Task<Chat> GetByIdAsync(int id)
     {
         return _chats.FirstOrDefault(c => c.Id == id);
     }
 
-    public async Task AddAsync(Chat chat)
+    public async Task<int> AddAsync(Chat chat)
     {
+        chat.Id = _id++;
+        
         _chats.Add(chat);
+        
+        return chat.Id;
     }
 
-    public async Task<List<Chat>> SearchAsync(string keyword)
+    public async Task Update(int id, Chat chat)
     {
-        return _chats
-            .Where(c => c.User.Contains(keyword) ||
-                        c.Conversation.Any(x => x.Key.Contains(keyword) || 
-                                                x.Value.Contains(keyword)))
-            .ToList();
+        var oldChat = _chats.FirstOrDefault(c => c.Id == id);
+        
+        _chats.Remove(oldChat);
+        
+        _chats.Add(chat);
     }
 }

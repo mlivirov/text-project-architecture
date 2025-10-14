@@ -6,3 +6,13 @@ public class Chat
     public string User { get; set; }
     public Dictionary<string, string> Conversation { get; set; }
 }
+
+public class Question
+{
+    public string Value { get; set; }
+}
+
+public class Answer
+{
+    public string Value { get; set; }
+}

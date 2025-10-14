@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -8,47 +7,42 @@ public class ChatsController : ControllerBase
 {
     private readonly IChatRepository _repository;
 
-    private static int _counter = 1;
-
     public ChatsController(IChatRepository repository)
     {
         _repository = repository;
     }
 
     [HttpGet("{id}")]
-    public async Task<Chat> Get(int id)
+    public async Task<ActionResult<Chat>> Get(int id)
     {
         return await _repository.GetByIdAsync(id);
     }
 
     [HttpPost("create")]
-    public int Create([FromBody] Chat chat)
+    public async Task<ActionResult<int>> Create([FromBody] Chat chat)
     {
-        chat.Id = _counter++;
+        var id = await _repository.AddAsync(chat);
         
-        _repository.AddAsync(chat);
-        
-        return chat.Id;
-    }
-
-    [HttpGet("search")]
-    public async Task<List<Chat>> Search(string keyword)
-    {
-        return await _repository.SearchAsync(keyword);
+        return id;
     }
     
     [HttpPost("{id}/ask")]
-    public async Task<string> AskQuestion(int id, [FromBody] string question)
+    public async Task<ActionResult<Answer>> AskQuestion(int id, [FromBody] Question question)
     {
         var chat = await _repository.GetByIdAsync(id);
         
         if (chat == null)
         {
-            return "Chat not found";
+            return NotFound("Chat not found");
         }
         
-        chat.Conversation[question] = "I don't know";
+        chat.Conversation[question.Value] = "I don't know";
         
-        return chat.Conversation[question];
+        await _repository.Update(id, chat);
+
+        return new Answer
+        {
+            Value = chat.Conversation[question.Value]
+        };
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IChatRepository, MemoryChatRepository>();
+builder.Services.AddSingleton<IChatRepository, MemoryChatRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
