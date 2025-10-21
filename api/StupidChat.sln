@@ -1,6 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StupidChat", "StupidChat\StupidChat.csproj", "{A5552033-5345-4135-878F-138959934F0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StupidChat.Application", "StupidChat.Application\StupidChat.Application.csproj", "{67B0DE27-3C97-4E35-8905-D493091AD5E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StupidChat.Domain", "StupidChat.Domain\StupidChat.Domain.csproj", "{1A211C41-6A39-4199-B3ED-91A8B6F5EFA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StupidChat.Infrastructure", "StupidChat.Infrastructure\StupidChat.Infrastructure.csproj", "{CBEB780C-4D3C-4F5E-9509-9184B25B0C5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StupidChat.WebApi", "StupidChat.WebApi\StupidChat.WebApi.csproj", "{D5973099-02F2-4FA0-89CF-74BC37CA6A4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A92B171D-171F-4C03-A682-761122A3BECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StupidChat.IntegrationTests", "StupidChat.IntegrationTests\StupidChat.IntegrationTests.csproj", "{3C84663D-D1EB-44BD-8A17-41BA681064CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC620E69-0F06-4B6C-8A95-ABBD22EF7B12}"
+	ProjectSection(SolutionItems) = preProject
+		..\docker-compose.yaml = ..\docker-compose.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +23,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A5552033-5345-4135-878F-138959934F0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5552033-5345-4135-878F-138959934F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5552033-5345-4135-878F-138959934F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5552033-5345-4135-878F-138959934F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67B0DE27-3C97-4E35-8905-D493091AD5E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67B0DE27-3C97-4E35-8905-D493091AD5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67B0DE27-3C97-4E35-8905-D493091AD5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67B0DE27-3C97-4E35-8905-D493091AD5E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A211C41-6A39-4199-B3ED-91A8B6F5EFA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A211C41-6A39-4199-B3ED-91A8B6F5EFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A211C41-6A39-4199-B3ED-91A8B6F5EFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A211C41-6A39-4199-B3ED-91A8B6F5EFA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBEB780C-4D3C-4F5E-9509-9184B25B0C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBEB780C-4D3C-4F5E-9509-9184B25B0C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBEB780C-4D3C-4F5E-9509-9184B25B0C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBEB780C-4D3C-4F5E-9509-9184B25B0C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5973099-02F2-4FA0-89CF-74BC37CA6A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5973099-02F2-4FA0-89CF-74BC37CA6A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5973099-02F2-4FA0-89CF-74BC37CA6A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5973099-02F2-4FA0-89CF-74BC37CA6A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C84663D-D1EB-44BD-8A17-41BA681064CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C84663D-D1EB-44BD-8A17-41BA681064CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C84663D-D1EB-44BD-8A17-41BA681064CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C84663D-D1EB-44BD-8A17-41BA681064CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C84663D-D1EB-44BD-8A17-41BA681064CC} = {A92B171D-171F-4C03-A682-761122A3BECE}
 	EndGlobalSection
 EndGlobal
