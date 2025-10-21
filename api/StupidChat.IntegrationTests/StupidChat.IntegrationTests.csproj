@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+        <PreserveCompilationContext>true</PreserveCompilationContext>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="coverlet.collector" Version="6.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.10" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+        <PackageReference Include="Npgsql" Version="9.0.4" />
+        <PackageReference Include="Respawn" Version="5.0.1" />
+        <PackageReference Include="Testcontainers.PostgreSql" Version="4.8.0" />
+        <PackageReference Include="Testcontainers.Redis" Version="4.8.0" />
+        <PackageReference Include="xunit" Version="2.5.3" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+        <PackageReference Include="FluentAssertions" Version="8.7.1" />
+        <PackageReference Include="FluentAssertions.Web" Version="1.9.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StupidChat.Infrastructure\StupidChat.Infrastructure.csproj" />
+      <ProjectReference Include="..\StupidChat.WebApi\StupidChat.WebApi.csproj" />
+    </ItemGroup>
+
+</Project>
